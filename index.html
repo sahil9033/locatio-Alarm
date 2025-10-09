@@ -4,17 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Location Alarm</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #00c6ff;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .download-btn:hover {
+      background-color: #0072ff;
+      color: #fff;
+    }
+
+    .screenshots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .screenshots img {
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .screenshots img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .screenshots img {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Location Alarm</h1>
+  <h1>📍 Location Alarm</h1>
   <p>Notify where I reach. Built with precision and purpose.</p>
-  <a href="Location_Alarm.apk" download>Download APK</a>
-  <div>
-    <img src="screenshot1.jpg" alt="Screenshot 1" width="300" />
-    <img src="screenshot2.jpg" alt="Screenshot 2" width="300" />
-    <img src="screenshot3.jpg" alt="Screenshot 3" width="300" />
-    <img src="screenshot4.jpg" alt="Screenshot 4" width="300" />
-    <img src="screenshot5.jpg" alt="Screenshot 5" width="300" />
+
+  <a class="download-btn" href="Location_Alarm.apk" download>⬇️ Download APK</a>
+
+  <div class="screenshots">
+    <img src="screenshot1.jpg" alt="Screenshot 1" />
+    <img src="screenshot2.jpg" alt="Screenshot 2" />
+    <img src="screenshot3.jpg" alt="Screenshot 3" />
+    <img src="screenshot4.jpg" alt="Screenshot 4" />
+    <img src="screenshot5.jpg" alt="Screenshot 5" />
   </div>
 </body>
 </html>
