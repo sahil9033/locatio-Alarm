@@ -5,108 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Location Alarm</title>
   <style>
+    /* Global Reset and Nothing Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* Use a bold, simple monospace or system font for the Nothing feel */
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #000000; /* True Black background */
+      color: #ffffff; /* White text */
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 1rem;
+      padding: 5rem 1rem;
       min-height: 100vh;
+      line-height: 1.4;
+      position: relative;
     }
 
+    /* Subtle grid pattern in the background (Optional: can be added with ::before) */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+    }
+
+    .content-area {
+      z-index: 1; /* Keep content above the grid background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    /* Headline - Bold, stark, all caps */
     h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 4rem;
+      font-weight: 900; /* Ultra bold */
+      letter-spacing: 0.15em; /* Wide spacing */
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      opacity: 1;
+      text-align: center;
+      /* Subtle white glow/shadow for emphasis */
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
     }
 
-    p {
-      font-size: 1.3rem;
-      opacity: 0.85;
-      margin-bottom: 2.5rem;
+    /* Tagline - Monospace/Code look */
+    .tagline {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
       max-width: 600px;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: #bbbbbb; /* Darker gray */
+      letter-spacing: 0.1em;
     }
 
+    /* Download Button - Minimalist box with sharp corners */
     .download-btn {
-      padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid #00c6ff;
-      color: #00c6ff;
+      padding: 0.9rem 2.5rem;
+      background: transparent;
+      border: 2px solid #ffffff; /* Stark white border */
+      color: #ffffff;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 12px;
-      transition: all 0.4s ease;
-      font-size: 1.1rem;
+      border-radius: 0; /* Sharp, square corners */
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .download-btn:hover {
-      background-color: #00c6ff;
-      color: #000;
-      box-shadow: 0 0 20px #00c6ff;
+      background-color: #ffffff;
+      color: #000000; /* Inverse colors on hover */
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Subtle white glow on hover */
     }
 
+    /* Screenshots Section */
     .screenshots {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      display: flex; /* Change to flex for a tight, linear arrangement */
+      justify-content: center;
+      gap: 0.5rem; /* Very small gap for a near-seamless look */
+      margin-top: 5rem;
       width: 100%;
-      max-width: 1200px;
+      overflow-x: auto; /* Allow horizontal scrolling if many images */
+      padding-bottom: 1rem;
     }
 
     .screenshots img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+      width: 250px; /* Fixed width for consistency */
+      height: auto;
+      border-radius: 0px; /* No rounded corners */
+      box-shadow: none; /* No soft shadows */
+      border: 1px solid #333333; /* A slight, dark border */
+      /* Apply the signature Nothing visual style */
+      filter: grayscale(100%) contrast(1.2);
+      transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
     }
 
     .screenshots img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+      transform: none; /* No scale up on hover */
+      filter: grayscale(0%) contrast(1.0) brightness(1.2); /* Full color on hover */
+      border-color: #ffffff;
+      cursor: pointer;
     }
 
-    @media (max-width: 600px) {
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
+        letter-spacing: 0.1em;
       }
-
-      p {
-        font-size: 1.1rem;
-      }
-
-      .download-btn {
+      .tagline {
         font-size: 1rem;
-        padding: 0.8rem 1.5rem;
+        letter-spacing: 0.08em;
+      }
+      .screenshots {
+        justify-content: flex-start; /* Start images from the left on mobile */
+      }
+      .screenshots img {
+        width: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>📍 Location Alarm</h1>
-  <p>Notify where I reach. Built with precision, purpose, and cinematic polish.</p>
+  <div class="content-area">
+    <h1>LOCATION ALARM</h1>
+    <p class="tagline">// NOTIFY WHEN REACHED</p>
 
-  <a class="download-btn" href="Location_Alarm.apk" download>⬇️ Download APK</a>
+    <a class="download-btn" href="Location_Alarm.apk" download>GET THE APK</a>
 
-  <div class="screenshots">
-    <img src="screenshot1.jpg" alt="Screenshot 1" />
-    <img src="screenshot2.jpg" alt="Screenshot 2" />
-    <img src="screenshot3.jpg" alt="Screenshot 3" />
-    <img src="screenshot4.jpg" alt="Screenshot 4" />
-    <img src="screenshot5.jpg" alt="Screenshot 5" />
+    <div class="screenshots">
+      <img src="screenshot1.jpg" alt="Interface Module 1" />
+      <img src="screenshot2.jpg" alt="Interface Module 2" />
+      <img src="screenshot3.jpg" alt="Interface Module 3" />
+      <img src="screenshot4.jpg" alt="Interface Module 4" />
+      <img src="screenshot5.jpg" alt="Interface Module 5" />
+    </div>
   </div>
 </body>
 </html>
