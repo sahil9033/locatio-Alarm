@@ -1,0 +1,36 @@
+📍 Location Alarm App – Privacy Policy
+Effective Date: [Insert Date]
+At Location Alarm, your privacy is our priority. This policy explains how we collect, use, and protect your data when you use our app.
+
+🔐 What We Collect
+We may collect the following data to provide core functionality:
+- Location Data: Used to trigger alarms based on your selected destinations. This data is processed locally and never stored or shared.
+- Device Information: Basic device data (e.g., OS version) may be used to optimize performance.
+- Usage Analytics (Optional): Anonymous data may be collected to improve app features. You can opt out anytime.
+
+🚫 What We Don’t Do
+- We do not track your location continuously.
+- We do not sell or share your personal data with third parties.
+- We do not access your contacts, media, or other personal files.
+
+🧠 How Your Data Is Used
+- Location triggers: Your location is used only when the app is active and alarms are set.
+- Performance optimization: Device info helps us ensure smooth operation across Android versions.
+- User feedback: Optional analytics help us refine the experience.
+
+🛡️ Data Security
+We use industry-standard security practices to protect your data. All location processing happens locally on your device. No cloud storage or external servers are involved unless explicitly stated.
+
+📢 Ads & Monetization
+If ads are displayed, they are served via trusted platforms (e.g., AdSense) and may use anonymized data for relevance. You can learn more or adjust preferences via the app settings.
+
+👤 Your Control
+- You can disable location access anytime via your device settings.
+- You can opt out of analytics and personalized ads.
+- You can uninstall the app to remove all locally stored data.
+
+📬 Contact Us
+For questions or concerns, reach out at:
+Email: [sahilpatil9033@gmail.com]
+Developer: Epicium (Sahil Patil)
+GitHub: [https://github.com/sahil9033]
