@@ -23,8 +23,8 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 8rem 2rem 4rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+      padding: 6rem 2rem 5rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
       position: relative;
       overflow: hidden;
     }
@@ -32,18 +32,18 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -50%;
       left: 50%;
       transform: translateX(-50%);
-      width: 150%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(0,125,250,0.1) 0%, transparent 70%);
-      animation: pulse 8s ease-in-out infinite;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(0,122,255,0.08) 0%, transparent 60%);
+      animation: pulse 10s ease-in-out infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
-      50% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+      50% { transform: translateX(-50%) scale(1.15); opacity: 1; }
     }
 
     .content-area {
@@ -51,16 +51,34 @@
       z-index: 1;
     }
 
+    .app-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      border-radius: 26px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      animation: fadeInScale 1s ease-out;
+      display: block;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     h1 {
-      font-size: 5rem;
+      font-size: 4.5rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #1d1d1f 0%, #4a4a4a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeInUp 1s ease-out;
+      color: #1d1d1f;
+      animation: fadeInUp 1s ease-out 0.2s both;
     }
 
     @keyframes fadeInUp {
@@ -75,53 +93,55 @@
     }
 
     .tagline {
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-size: 1.75rem;
+      font-weight: 500;
       color: #6e6e73;
-      margin-bottom: 2rem;
-      line-height: 1.4;
-      animation: fadeInUp 1s ease-out 0.2s both;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      animation: fadeInUp 1s ease-out 0.3s both;
     }
 
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #86868b;
       margin-bottom: 3rem;
-      max-width: 600px;
+      max-width: 650px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.5;
       animation: fadeInUp 1s ease-out 0.4s both;
     }
 
     .download-btn {
       display: inline-block;
-      padding: 1rem 3rem;
-      background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+      padding: 1.1rem 3.5rem;
+      background: linear-gradient(135deg, #007aff 0%, #005ecb 100%);
       color: white;
       font-weight: 600;
       text-decoration: none;
       border-radius: 980px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       letter-spacing: -0.01em;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 30px rgba(0, 122, 255, 0.35);
       animation: fadeInUp 1s ease-out 0.6s both;
     }
 
     .download-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 122, 255, 0.4);
-      background: linear-gradient(135deg, #0051d5 0%, #007aff 100%);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(0, 122, 255, 0.45);
+      background: linear-gradient(135deg, #0062cc 0%, #007aff 100%);
     }
 
     .download-btn:active {
-      transform: translateY(0);
+      transform: translateY(-1px) scale(1);
+      transition: all 0.1s;
     }
 
     /* Screenshots Section */
     .screenshots-section {
-      padding: 6rem 2rem 8rem;
-      background: white;
+      padding: 7rem 2rem 9rem;
+      background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
       position: relative;
     }
 
@@ -132,158 +152,174 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
     .section-header h2 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       color: #1d1d1f;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .section-header p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: #6e6e73;
+      font-weight: 400;
     }
 
     .screenshots {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      max-width: 1400px;
+      align-items: center;
+      gap: 2.5rem;
+      max-width: 1200px;
       margin: 0 auto;
-      overflow-x: auto;
       padding: 2rem 1rem;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0,0,0,0.2) transparent;
-    }
-
-    .screenshots::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .screenshots::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .screenshots::-webkit-scrollbar-thumb {
-      background: rgba(0,0,0,0.2);
-      border-radius: 4px;
     }
 
     .screenshot-wrapper {
       flex-shrink: 0;
-      scroll-snap-align: center;
-      animation: fadeIn 0.8s ease-out backwards;
+      animation: fadeIn 1s ease-out backwards;
+      filter: drop-shadow(0 15px 50px rgba(0, 0, 0, 0.12));
     }
 
-    .screenshot-wrapper:nth-child(1) { animation-delay: 0.1s; }
-    .screenshot-wrapper:nth-child(2) { animation-delay: 0.2s; }
-    .screenshot-wrapper:nth-child(3) { animation-delay: 0.3s; }
-    .screenshot-wrapper:nth-child(4) { animation-delay: 0.4s; }
-    .screenshot-wrapper:nth-child(5) { animation-delay: 0.5s; }
+    .screenshot-wrapper:nth-child(1) { animation-delay: 0.2s; }
+    .screenshot-wrapper:nth-child(2) { animation-delay: 0.3s; }
+    .screenshot-wrapper:nth-child(3) { animation-delay: 0.4s; }
+    .screenshot-wrapper:nth-child(4) { animation-delay: 0.5s; }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: translateY(30px) scale(0.95);
       }
       to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1);
       }
     }
 
     .screenshots img {
-      width: 280px;
+      width: 260px;
       height: auto;
-      border-radius: 24px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 32px;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .screenshots img:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      transform: translateY(-12px) scale(1.05);
+      filter: drop-shadow(0 25px 60px rgba(0, 122, 255, 0.3));
       cursor: pointer;
     }
 
     /* Features Section */
     .features {
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      padding: 7rem 2rem 8rem;
+      background: linear-gradient(135deg, #f9fafb 0%, #f0f4f8 100%);
       text-align: center;
     }
 
     .features h3 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #1d1d1f;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
+      letter-spacing: -0.02em;
     }
 
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3.5rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .feature-item {
-      padding: 2rem;
+      padding: 3rem 2.5rem;
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 28px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .feature-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
     }
 
     .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-item:hover .feature-icon {
+      transform: scale(1.1);
     }
 
     .feature-item h4 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: #1d1d1f;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
     }
 
     .feature-item p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #6e6e73;
       line-height: 1.6;
     }
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 3rem;
+        font-size: 2.8rem;
       }
       .tagline {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+      }
+      .subtitle {
+        font-size: 1.05rem;
+      }
+      .app-logo {
+        width: 100px;
+        height: 100px;
       }
       .section-header h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      .section-header p {
+        font-size: 1.1rem;
+      }
+      .screenshots {
+        gap: 1.5rem;
+        overflow-x: auto;
+        justify-content: flex-start;
+        scroll-snap-type: x mandatory;
+      }
+      .screenshot-wrapper {
+        scroll-snap-align: center;
       }
       .screenshots img {
-        width: 220px;
+        width: 240px;
       }
       .hero {
-        padding: 5rem 1.5rem 3rem;
+        padding: 4rem 1.5rem 3rem;
+      }
+      .features h3 {
+        font-size: 2rem;
+      }
+      .feature-grid {
+        gap: 2rem;
       }
     }
   </style>
@@ -291,6 +327,7 @@
 <body>
   <section class="hero">
     <div class="content-area">
+      <img src="logo.png" alt="Location Alarm Logo" class="app-logo" />
       <h1>Location Alarm</h1>
       <p class="tagline">Never miss your stop again</p>
       <p class="subtitle">Get notified automatically when you reach your destination. Smart, simple, and always on time.</p>
@@ -305,9 +342,6 @@
     </div>
     <div class="screenshots">
       <div class="screenshot-wrapper">
-        <img src="screenshot1.jpg" alt="Location Alarm Home Screen" />
-      </div>
-      <div class="screenshot-wrapper">
         <img src="screenshot2.jpg" alt="Set Your Destination" />
       </div>
       <div class="screenshot-wrapper">
@@ -315,9 +349,6 @@
       </div>
       <div class="screenshot-wrapper">
         <img src="screenshot4.jpg" alt="Get Notified" />
-      </div>
-      <div class="screenshot-wrapper">
-        <img src="screenshot5.jpg" alt="Manage Alarms" />
       </div>
     </div>
   </section>
