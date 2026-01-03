@@ -5,158 +5,342 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Location Alarm</title>
   <style>
-    /* Global Reset and Nothing Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Use a bold, simple monospace or system font for the Nothing feel */
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #000000; /* True Black background */
-      color: #ffffff; /* White text */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 5rem 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #1d1d1f;
       min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0,125,250,0.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+      50% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+    }
+
+    .content-area {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #1d1d1f 0%, #4a4a4a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #6e6e73;
+      margin-bottom: 2rem;
       line-height: 1.4;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #86868b;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 980px;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 122, 255, 0.4);
+      background: linear-gradient(135deg, #0051d5 0%, #007aff 100%);
+    }
+
+    .download-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Screenshots Section */
+    .screenshots-section {
+      padding: 6rem 2rem 8rem;
+      background: white;
       position: relative;
     }
 
-    /* Subtle grid pattern in the background (Optional: can be added with ::before) */
-    body::before {
+    .screenshots-section::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
     }
 
-    .content-area {
-      z-index: 1; /* Keep content above the grid background */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 800px;
-      width: 100%;
-    }
-
-    /* Headline - Bold, stark, all caps */
-    h1 {
-      font-size: 4rem;
-      font-weight: 900; /* Ultra bold */
-      letter-spacing: 0.15em; /* Wide spacing */
-      margin-bottom: 0.25rem;
-      text-transform: uppercase;
-      opacity: 1;
+    .section-header {
       text-align: center;
-      /* Subtle white glow/shadow for emphasis */
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+      margin-bottom: 4rem;
     }
 
-    /* Tagline - Monospace/Code look */
-    .tagline {
-      font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
-      max-width: 600px;
-      text-align: center;
-      margin-bottom: 3.5rem;
-      color: #bbbbbb; /* Darker gray */
-      letter-spacing: 0.1em;
+    .section-header h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1d1d1f;
+      margin-bottom: 0.5rem;
     }
 
-    /* Download Button - Minimalist box with sharp corners */
-    .download-btn {
-      padding: 0.9rem 2.5rem;
-      background: transparent;
-      border: 2px solid #ffffff; /* Stark white border */
-      color: #ffffff;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 0; /* Sharp, square corners */
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    .section-header p {
+      font-size: 1.3rem;
+      color: #6e6e73;
     }
 
-    .download-btn:hover {
-      background-color: #ffffff;
-      color: #000000; /* Inverse colors on hover */
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Subtle white glow on hover */
-    }
-
-    /* Screenshots Section */
     .screenshots {
-      display: flex; /* Change to flex for a tight, linear arrangement */
+      display: flex;
       justify-content: center;
-      gap: 0.5rem; /* Very small gap for a near-seamless look */
-      margin-top: 5rem;
-      width: 100%;
-      overflow-x: auto; /* Allow horizontal scrolling if many images */
-      padding-bottom: 1rem;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      overflow-x: auto;
+      padding: 2rem 1rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,0,0,0.2) transparent;
+    }
+
+    .screenshots::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .screenshots::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .screenshots::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+
+    .screenshot-wrapper {
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      animation: fadeIn 0.8s ease-out backwards;
+    }
+
+    .screenshot-wrapper:nth-child(1) { animation-delay: 0.1s; }
+    .screenshot-wrapper:nth-child(2) { animation-delay: 0.2s; }
+    .screenshot-wrapper:nth-child(3) { animation-delay: 0.3s; }
+    .screenshot-wrapper:nth-child(4) { animation-delay: 0.4s; }
+    .screenshot-wrapper:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .screenshots img {
-      flex-shrink: 0;
-      width: 250px; /* Fixed width for consistency */
+      width: 280px;
       height: auto;
-      border-radius: 0px; /* No rounded corners */
-      box-shadow: none; /* No soft shadows */
-      border: 1px solid #333333; /* A slight, dark border */
-      /* Apply the signature Nothing visual style */
-      filter: grayscale(100%) contrast(1.2);
-      transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .screenshots img:hover {
-      transform: none; /* No scale up on hover */
-      filter: grayscale(0%) contrast(1.0) brightness(1.2); /* Full color on hover */
-      border-color: #ffffff;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
       cursor: pointer;
     }
 
-    /* Mobile Adjustments */
+    /* Features Section */
+    .features {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      text-align: center;
+    }
+
+    .features h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 4rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-item h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1d1d1f;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-item p {
+      font-size: 1rem;
+      color: #6e6e73;
+      line-height: 1.6;
+    }
+
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.5rem;
-        letter-spacing: 0.1em;
+        font-size: 3rem;
       }
       .tagline {
-        font-size: 1rem;
-        letter-spacing: 0.08em;
+        font-size: 1.2rem;
       }
-      .screenshots {
-        justify-content: flex-start; /* Start images from the left on mobile */
+      .section-header h2 {
+        font-size: 2rem;
       }
       .screenshots img {
-        width: 200px;
+        width: 220px;
+      }
+      .hero {
+        padding: 5rem 1.5rem 3rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="content-area">
-    <h1>LOCATION ALARM</h1>
-    <p class="tagline">// NOTIFY WHEN REACHED</p>
-
-    <a class="download-btn" href="Location_Alarm.apk" download>GET THE APK</a>
-
-    <div class="screenshots">
-      <img src="screenshot1.jpg" alt="Interface Module 1" />
-      <img src="screenshot2.jpg" alt="Interface Module 2" />
-      <img src="screenshot3.jpg" alt="Interface Module 3" />
-      <img src="screenshot4.jpg" alt="Interface Module 4" />
-      <img src="screenshot5.jpg" alt="Interface Module 5" />
+  <section class="hero">
+    <div class="content-area">
+      <h1>Location Alarm</h1>
+      <p class="tagline">Never miss your stop again</p>
+      <p class="subtitle">Get notified automatically when you reach your destination. Smart, simple, and always on time.</p>
+      <a class="download-btn" href="Location_Alarm.apk" download>Download for Android</a>
     </div>
-  </div>
+  </section>
+
+  <section class="screenshots-section">
+    <div class="section-header">
+      <h2>See it in action</h2>
+      <p>Beautiful, intuitive, and powerful</p>
+    </div>
+    <div class="screenshots">
+      <div class="screenshot-wrapper">
+        <img src="screenshot1.jpg" alt="Location Alarm Home Screen" />
+      </div>
+      <div class="screenshot-wrapper">
+        <img src="screenshot2.jpg" alt="Set Your Destination" />
+      </div>
+      <div class="screenshot-wrapper">
+        <img src="screenshot3.jpg" alt="Track Your Journey" />
+      </div>
+      <div class="screenshot-wrapper">
+        <img src="screenshot4.jpg" alt="Get Notified" />
+      </div>
+      <div class="screenshot-wrapper">
+        <img src="screenshot5.jpg" alt="Manage Alarms" />
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h3>Why you'll love it</h3>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">📍</div>
+        <h4>Precise Location</h4>
+        <p>Advanced GPS tracking ensures you're alerted at exactly the right moment.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔔</div>
+        <h4>Smart Alerts</h4>
+        <p>Customizable notifications that work even when your phone is locked.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <h4>Battery Efficient</h4>
+        <p>Optimized to use minimal battery while keeping you informed.</p>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
